@@ -10,7 +10,6 @@
 1. Azure Portal에 로그인합니다.
 2. Event Hubs 네임스페이스를 생성합니다.
 3. 네임스페이스 내에서 이벤트 허브를 생성합니다.
-4. "공유 액세스 정책"에서 "RootManageSharedAccessKey" 정책을 선택하고 연결 문자열을 복사합니다.
 
 
 ```bash
