@@ -13,9 +13,10 @@
 
 
 ```bash
+# uv 설치
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # uv 초기화 후 가상환경 및 Python 버전 설정
-uv init
 uv venv --python 3.12 .venv
 source .venv/bin/activate
 
@@ -31,4 +32,13 @@ python --version
 # 패키지 설치
 ```bash
 uv sync
+```
+
+## 환경 변수 설정
+```
+
+export EVENT_HUB_FULLY_QUALIFIED_NAMESPACE=yournamespace.servicebus.windows.net
+export EVENT_HUB_NAME=hub1
+export SCHEMA_REGISTRY_ENDPOINT=yournamespace.servicebus.windows.net
+export SCHEMA_GROUP=avroschema
 ```
