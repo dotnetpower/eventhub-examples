@@ -6,11 +6,11 @@
 - Azure Event Hubs 네임스페이스 및 이벤트 허브
 - Python 3.12 이상
 
+
 ## Azure Portal 에서 Event Hubs 설정
 1. Azure Portal에 로그인합니다.
 2. Event Hubs 네임스페이스를 생성합니다.
 3. 네임스페이스 내에서 이벤트 허브를 생성합니다.
-
 
 ```bash
 # uv 설치
@@ -42,3 +42,13 @@ export EVENT_HUB_NAME=hub1
 export SCHEMA_REGISTRY_ENDPOINT=yournamespace.servicebus.windows.net
 export SCHEMA_GROUP=avroschema
 ```
+
+# CBS Token 인증 오류 관련 안내
+Event Hubs 네트워크 설정이 "Selected networks"로 되어 있을 경우, 클라이언트의 IP가 허용된 목록에 추가되어 있지 않으면 `CBS Token authentication failed` 오류가 발생할 수 있습니다.
+
+이 오류가 발생하면 Azure Portal에서 Event Hubs 네트워크 설정에 접속하여, 클라이언트가 접근하는 IP 주소를 허용 목록에 추가해 주세요.
+
+## 해결 방법
+1. Azure Portal에서 Event Hubs 리소스의 네트워크 설정으로 이동합니다.
+2. "Selected networks"가 활성화되어 있다면, "Add your client IP" 또는 "Add IP range"를 통해 접근하는 IP를 허용합니다.
+3. 변경 후 클라이언트에서 다시 연결을 시도합니다.
