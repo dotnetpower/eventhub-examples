@@ -43,6 +43,53 @@ export SCHEMA_REGISTRY_ENDPOINT=yournamespace.servicebus.windows.net
 export SCHEMA_GROUP=avroschema
 ```
 
+## 예제 목록
+
+### Python 예제
+- `examples/1-basic/`: 기본적인 Event Hub 사용법
+- `examples/2-send_recv/`: Send와 Receive 분리된 예제
+- `examples/3-send_recv_schemaregistry/`: Schema Registry를 사용한 예제
+
+### .NET 예제
+- `examples/dotnet/`: .NET 8.0을 사용한 Event Hub Send/Receive 예제
+  - `EventHubSender`: 콘솔 애플리케이션으로 메시지 전송
+  - `EventHubReceiver`: 콘솔 애플리케이션으로 메시지 수신 (체크포인팅 지원)
+
+## .NET 예제 실행 방법
+
+```bash
+# .NET 8.0 설치 확인
+dotnet --version
+
+# Azure CLI로 로그인 (DefaultAzureCredential 사용)
+az login
+
+# 환경 변수 설정 - .env 파일 사용 (권장)
+cp .env.example .env
+# .env 파일을 편집하여 실제 값 입력
+
+# 또는 환경 변수 직접 설정
+export EVENT_HUB_FULLY_QUALIFIED_NAMESPACE="your-namespace.servicebus.windows.net"
+export EVENT_HUB_NAME="your-event-hub-name"
+
+# 체크포인팅을 사용하려면 (선택사항)
+export STORAGE_ACCOUNT_NAME="your-storage-account-name"
+export BLOB_CONTAINER_NAME="checkpoints"
+
+# Sender 실행
+cd examples/dotnet/EventHubSender
+dotnet run
+
+# Receiver 실행 (새 터미널에서)
+cd examples/dotnet/EventHubReceiver
+dotnet run
+```
+
+### 권한 설정
+.NET 예제는 DefaultAzureCredential을 사용하므로 다음 Azure 역할이 필요합니다:
+- **Azure Event Hubs Data Owner** (Event Hub 네임스페이스에)
+- **Storage Blob Data Contributor** (Storage Account에, 체크포인팅 사용 시)
+
 # CBS Token 인증 오류 관련 안내
 Event Hubs 네트워크 설정이 "Selected networks"로 되어 있을 경우, 클라이언트의 IP가 허용된 목록에 추가되어 있지 않으면 `CBS Token authentication failed` 오류가 발생할 수 있습니다.
 

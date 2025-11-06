@@ -1,0 +1,87 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-sender",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/examples/dotnet/EventHubSender/EventHubSender.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "build-receiver",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/examples/dotnet/EventHubReceiver/EventHubReceiver.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "reveal": "silent"
+            }
+        },
+        {
+            "label": "build-all-dotnet",
+            "dependsOrder": "parallel",
+            "dependsOn": [
+                "build-sender",
+                "build-receiver"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "watch-sender",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/examples/dotnet/EventHubSender/EventHubSender.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build",
+            "runOptions": {
+                "instanceLimit": 1
+            }
+        },
+        {
+            "label": "watch-receiver",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/examples/dotnet/EventHubReceiver/EventHubReceiver.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": "build",
+            "runOptions": {
+                "instanceLimit": 1
+            }
+        }
+    ]
+}

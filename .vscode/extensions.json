@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "ms-vscode.vscode-json",
+        "ms-python.python",
+        "ms-python.debugpy"
+    ]
+}
