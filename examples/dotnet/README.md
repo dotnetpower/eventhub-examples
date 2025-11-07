@@ -144,12 +144,12 @@ dotnet run
 - **watch-sender**: EventHubSender 파일 변경 감시 및 자동 실행
 - **watch-receiver**: EventHubReceiver 파일 변경 감시 및 자동 실행
 
-`Ctrl+Shift+P` → "Tasks: Run Task"로 태스크를 실행할 수 있습니다.
+`Ctrl+Shift+P` -> "Tasks: Run Task"로 태스크를 실행할 수 있습니다.
 
 ## 기능
 
 ### EventHubSender
-- 10개의 JSON 메시지를 Event Hub에 배치로 전송
+- 1000개의 JSON 메시지를 Event Hub에 배치로 전송
 - 각 메시지에 사용자 정의 속성 추가
 - 오류 처리 및 로깅
 
